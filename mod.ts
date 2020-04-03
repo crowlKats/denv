@@ -13,7 +13,6 @@ function parse(string: string) {
 	});
 }
 
-
 export async function load(path: string = ".env") {
 	const file = await Deno.readFile(path);
 	const decoder = new TextDecoder();
@@ -23,5 +22,6 @@ export async function load(path: string = ".env") {
 		Deno.env()[key] = val;
 	}
 }
+
 
 await load();
