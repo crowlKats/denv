@@ -1,5 +1,5 @@
 # denv
-A module similar to [dotEnv](https://github.com/motdotla/dotenv), but for Deno
+A module similar to [dotenv](https://github.com/motdotla/dotenv), but for Deno
 
 ## Usage
 You can directly import it, and it will use the `.env` file of the directory it is imported from:
@@ -11,3 +11,6 @@ else you can import the `load` function, where you can pass the path to the `.en
 import {load} from "<denv link>";
 await load("myenvfile");
 ```
+
+## Env File Rules
+The rules are the same as dotenv, except `double quoted values expand new lines` is not implemented 
