@@ -2,13 +2,13 @@
 A module similar to [dotenv](https://github.com/motdotla/dotenv), but for Deno
 
 ## Usage
-You can directly import it, and it will use the `.env` file of the directory it is imported from:
+You can directly import it, and it will use the `.env` file of the directory it is imported in:
 ```ts
-import "<denv link>";
+import "https://deno.land/x/denv/mod.ts";
 ```
 else you can import the `load` function, where you can pass the path to the `.env` file:
 ```ts
-import {load} from "<denv link>";
+import {load} from "https://deno.land/x/denv/mod.ts";
 await load("myenvfile");
 ```
 
