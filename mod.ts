@@ -1,11 +1,5 @@
 export function parse(string: string) {
-	const lines = string.split(/\n|\r|\r\n/).filter(line => {
-		if (line.startsWith("#")) {
-			return false;
-		} else {
-			return Boolean(line);
-		}
-	});
+	const lines = string.split(/\n|\r|\r\n/).filter(line => line.startsWith("#") ? false : !!line);
 	
 	return Object.fromEntries(lines.map(entry => {
 		let [key, val] = entry.split("=");
