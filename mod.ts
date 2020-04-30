@@ -20,8 +20,8 @@ export async function load(path: string = ".env") {
 	const decoder = new TextDecoder();
 	const dotEnvs = parse(decoder.decode(file));
 	
-	for (const [key, val] of dotEnvs.entries()) {
-		Deno.env()[key] = val;
+	for (const [key, val] of Object.entries(dotEnvs)) {
+		Deno.env.set(key, val);
 	}
 }
 
