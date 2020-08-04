@@ -10,5 +10,5 @@ Deno.test("unquoted", async () => {
 Deno.test("quoted", async () => {
   await load("./tests/.env");
 
-  assertEquals(Deno.env.get("HELLO"), "\"world\"");
+  assertEquals(Deno.env.get("HELLO"), '"world"');
 });
