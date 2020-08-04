@@ -26,5 +26,3 @@ export async function load(path: string = ".env") {
     Deno.env.set(key, val);
   }
 }
-
-await load();
