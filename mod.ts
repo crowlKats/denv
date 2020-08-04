@@ -5,10 +5,10 @@ export function parse(string: string) {
 
   return Object.fromEntries(lines.map((entry) => {
     let [key, val] = entry.split("=");
-    const quoteRegex = /^['"](.*)['"]$/;
+    const quoteRegex = /^(['"])(.*)(\1)$/;
 
     if (quoteRegex.test(val)) {
-      val = val.replace(quoteRegex, "$1");
+      val = val.replace(quoteRegex, "$2");
     } else {
       val = val.trim();
     }
