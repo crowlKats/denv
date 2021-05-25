@@ -1,3 +1,12 @@
+interface LoadOptions {
+  /** The path of the env file */
+  path?: string;
+  /** If true, won't overwrite existing variables */
+  priorityEnv?: boolean;
+  /** Will not throw an error if file is not found */
+  ignoreMissingFile?: boolean;
+}
+
 export function parse(string: string) {
   const lines = string.split(/\n|\r|\r\n/).filter((line) =>
     line.startsWith("#") ? false : !!line
@@ -16,13 +25,28 @@ export function parse(string: string) {
     return [key.trim(), val];
   }));
 }
+export async function load({
+  path = ".env",
+  priorityEnv = false,
+  ignoreMissingFile = false,
+}: LoadOptions) {
+  let file;
 
-export async function load(path: string = ".env") {
-  const file = await Deno.readFile(path);
+  try {
+    file = await Deno.readFile(path);
+  } catch (e) {
+    if (ignoreMissingFile) return;
+    throw e;
+  }
+
   const decoder = new TextDecoder();
   const dotEnvs = parse(decoder.decode(file));
 
   for (const [key, val] of Object.entries(dotEnvs)) {
+    if (priorityEnv && Deno.env.get(key) !== undefined) {
+      continue;
+    }
+
     Deno.env.set(key, val);
   }
 }
