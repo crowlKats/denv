@@ -18,7 +18,7 @@ jobs:
 
       - name: Deno Fmt Check
         run: deno fmt --check
-      
+
       - name: Deno Lint Check
         run: deno lint
 
