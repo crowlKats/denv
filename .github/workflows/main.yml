@@ -22,8 +22,5 @@ jobs:
       - name: Deno Lint Check
         run: deno lint
 
-      - name: Deno Lint Check
-        run: deno lint
-
       - name: Deno Test
         run: deno test --allow-env --allow-read
