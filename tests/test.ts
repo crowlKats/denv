@@ -23,13 +23,12 @@ Deno.test("prioritize existing env", async () => {
   assertEquals(Deno.env.get("FOO"), "bear");
 });
 
-Deno.test("throws if file not found", () => {
-  assertThrowsAsync(
+Deno.test("throws if file not found", async () => {
+  await assertThrowsAsync(
     async () => {
       await load({ path: "./tests/.env2" });
     },
-    undefined,
-    "No such file or directory",
+    Deno.errors.NotFound,
   );
 });
 
