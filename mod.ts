@@ -35,7 +35,7 @@ export async function load({
   try {
     file = await Deno.readFile(path);
   } catch (e) {
-    if (ignoreMissingFile) return;
+    if (ignoreMissingFile && e instanceof Deno.errors.NotFound) return;
     throw e;
   }
 
