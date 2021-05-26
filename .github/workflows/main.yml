@@ -14,11 +14,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Deno environment
-        uses: denolib/setup-deno@master
+        uses: denoland/setup-deno@v1
 
       - name: Deno Fmt Check
         run: deno fmt --check
-      
+
       - name: Deno Lint Check
         run: deno lint
 
