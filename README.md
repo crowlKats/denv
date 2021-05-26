@@ -17,6 +17,8 @@ await load({
   priorityEnv: false,
   /** Will not throw an error if file is not found */
   ignoreMissingFile: false,
+  /** If true or path, will verify the environment against the example file */
+  verifyAgainstExample?: boolean | string;
 });
 ```
 
