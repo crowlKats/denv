@@ -41,7 +41,8 @@ Deno.test("throws if missing from .env with boolean", async () => {
     async () => {
       await load({
         path: "./tests/.env",
-        verifyAgainstExample: "./tests/.env.example",
+        exampleFile: "./tests/.env.example",
+        verifyAgainstExample: true,
       });
     },
     MissingEnv,
@@ -52,6 +53,15 @@ Deno.test("throws if missing from .env with boolean", async () => {
 Deno.test("succedes with example file", async () => {
   await load({
     path: "./tests/.env.example",
-    verifyAgainstExample: "./tests/.env",
+    exampleFile: "./tests/.env",
+    verifyAgainstExample: true,
+  });
+});
+
+Deno.test("defaults to example file if not found", async () => {
+  await load({
+    path: "./tests/.env",
+    exampleFile: "./tests/.env.example",
+    verifyAgainstExample: true,
   });
 });
